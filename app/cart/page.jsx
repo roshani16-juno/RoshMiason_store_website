@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -28,17 +29,17 @@ export default function CartPage() {
 
   if (cart.length === 0) {
     return (
-      <main className="relative flex min-h-[75vh] items-center justify-center overflow-hidden bg-[#faf8f5] px-4 py-16 sm:px-6 md:px-8">
+      <main className="relative flex min-h-[75vh] items-center justify-center overflow-hidden bg-[#faf8f5] px-4 py-12 sm:px-6 sm:py-16 md:px-8">
         {/* Background decoration */}
         <div className="pointer-events-none absolute left-[-140px] top-10 h-80 w-80 rounded-full bg-amber-200/20 blur-[110px]" />
 
-        <div className="pointer-events-none absolute right-[-140px] bottom-0 h-96 w-96 rounded-full bg-rose-200/20 blur-[120px]" />
+        <div className="pointer-events-none absolute bottom-0 right-[-140px] h-96 w-96 rounded-full bg-rose-200/20 blur-[120px]" />
 
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative w-full max-w-lg text-center"
+          className="relative w-full max-w-lg px-1 text-center"
         >
           {/* Icon */}
           <motion.div
@@ -51,27 +52,29 @@ export default function CartPage() {
             }}
             className="
               mx-auto flex
-              h-24 w-24
+              h-20 w-20
               items-center justify-center
               rounded-full
               border border-white
               bg-white/70
               shadow-[0_20px_60px_rgba(70,50,30,0.08)]
               backdrop-blur-xl
+              sm:h-24
+              sm:w-24
             "
           >
             <ShoppingBag
-              size={32}
+              size={30}
               strokeWidth={1.4}
-              className="text-stone-700"
+              className="text-stone-700 sm:h-8 sm:w-8"
             />
           </motion.div>
 
-          <p className="mt-7 text-[10px] font-medium uppercase tracking-[0.35em] text-amber-700">
+          <p className="mt-6 text-[9px] font-medium uppercase tracking-[0.3em] text-amber-700 sm:mt-7 sm:text-[10px]">
             Maison Collection
           </p>
 
-          <h1 className="mt-3 font-display text-4xl text-stone-900 sm:text-5xl">
+          <h1 className="mt-3 font-display text-3xl leading-tight text-stone-900 sm:text-5xl">
             Your cart is empty
           </h1>
 
@@ -84,13 +87,13 @@ export default function CartPage() {
             href="/shop"
             className="
               group
-              mt-8
+              mt-7
               inline-flex
               items-center
               gap-3
               rounded-xl
               bg-stone-900
-              px-7
+              px-6
               py-3.5
               text-[10px]
               font-semibold
@@ -102,6 +105,8 @@ export default function CartPage() {
               duration-300
               hover:bg-amber-700
               hover:shadow-xl
+              sm:mt-8
+              sm:px-7
             "
           >
             Continue Shopping
@@ -134,9 +139,10 @@ export default function CartPage() {
           mx-auto
           max-w-7xl
           px-4
-          pb-20
-          pt-16
+          pb-16
+          pt-12
           sm:px-6
+          sm:pb-20
           sm:pt-20
           md:px-8
           md:pt-24
@@ -152,13 +158,13 @@ export default function CartPage() {
           transition={{ duration: 0.55 }}
           className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
         >
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-2 text-[9px] font-medium uppercase tracking-[0.3em] text-amber-700 sm:text-[10px]">
               <Sparkles size={12} />
               Maison
             </div>
 
-            <h1 className="mt-2 font-display text-4xl text-stone-900 sm:text-5xl md:text-6xl">
+            <h1 className="mt-2 font-display text-3xl leading-tight text-stone-900 sm:text-5xl md:text-6xl">
               Shopping Cart
             </h1>
 
@@ -198,12 +204,12 @@ export default function CartPage() {
             MAIN GRID
         ========================= */}
 
-        <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_390px]">
+        <div className="mt-7 grid gap-7 lg:mt-10 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_390px] lg:gap-8">
           {/* =========================
               CART ITEMS
           ========================= */}
 
-          <section>
+          <section className="min-w-0">
             {/* Header */}
             <div
               className="
@@ -263,7 +269,7 @@ export default function CartPage() {
                       sm:p-3
                     "
                   >
-                    <div className="flex gap-3 sm:gap-5">
+                    <div className="flex min-w-0 gap-3 sm:gap-5">
                       {/* IMAGE */}
                       <Link
                         href={`/product/${i.id}`}
@@ -299,9 +305,9 @@ export default function CartPage() {
                       {/* DETAILS */}
                       <div className="flex min-w-0 flex-1 flex-col justify-between py-0.5 sm:py-1">
                         {/* TOP */}
-                        <div>
+                        <div className="min-w-0">
                           <div className="flex items-start justify-between gap-2">
-                            <div className="min-w-0">
+                            <div className="min-w-0 flex-1">
                               <p className="text-[8px] uppercase tracking-[0.2em] text-stone-400 sm:text-[10px]">
                                 Maison Collection
                               </p>
@@ -311,9 +317,10 @@ export default function CartPage() {
                                 className="
                                   mt-1
                                   block
-                                  truncate
+                                  break-words
                                   font-display
                                   text-base
+                                  leading-snug
                                   text-stone-800
                                   transition
                                   hover:text-amber-700
@@ -352,7 +359,7 @@ export default function CartPage() {
                           </div>
 
                           {/* SIZE */}
-                          <div className="mt-2 flex items-center gap-2">
+                          <div className="mt-2 flex flex-wrap items-center gap-2">
                             <span className="text-[9px] uppercase tracking-wider text-stone-400">
                               Size
                             </span>
@@ -364,7 +371,7 @@ export default function CartPage() {
                         </div>
 
                         {/* BOTTOM */}
-                        <div className="mt-4 flex items-end justify-between gap-2">
+                        <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
                           {/* QUANTITY */}
                           <div>
                             <p className="mb-1.5 text-[8px] uppercase tracking-[0.15em] text-stone-400 sm:text-[9px]">
@@ -427,12 +434,12 @@ export default function CartPage() {
                           </div>
 
                           {/* PRICE */}
-                          <div className="text-right">
+                          <div className="ml-auto min-w-0 text-right">
                             <p className="text-[8px] uppercase tracking-[0.12em] text-stone-400 sm:text-[9px]">
                               Total
                             </p>
 
-                            <p className="mt-0.5 text-sm font-bold text-stone-900 sm:text-base">
+                            <p className="mt-0.5 break-words text-sm font-bold text-stone-900 sm:text-base">
                               {formatPrice(i.price * i.qty)}
                             </p>
                           </div>
@@ -458,7 +465,7 @@ export default function CartPage() {
                 className="
                   mt-4
                   flex
-                  items-center
+                  items-start
                   gap-3
                   rounded-2xl
                   border
@@ -469,12 +476,13 @@ export default function CartPage() {
                   text-xs
                   text-amber-900
                   sm:mt-5
+                  sm:items-center
                   sm:px-5
                 "
               >
                 <Truck
                   size={17}
-                  className="shrink-0 text-amber-600"
+                  className="mt-0.5 shrink-0 text-amber-600 sm:mt-0"
                 />
 
                 <p>
@@ -500,7 +508,7 @@ export default function CartPage() {
                 className="
                   mt-4
                   flex
-                  items-center
+                  items-start
                   gap-3
                   rounded-2xl
                   border
@@ -510,11 +518,12 @@ export default function CartPage() {
                   py-3
                   text-xs
                   text-emerald-800
+                  sm:items-center
                 "
               >
                 <Truck
                   size={17}
-                  className="shrink-0 text-emerald-600"
+                  className="mt-0.5 shrink-0 text-emerald-600 sm:mt-0"
                 />
 
                 <p>
@@ -531,7 +540,7 @@ export default function CartPage() {
               ORDER SUMMARY
           ========================= */}
 
-          <aside className="lg:sticky lg:top-24 lg:h-fit">
+          <aside className="min-w-0 lg:sticky lg:top-24 lg:h-fit">
             <div
               className="
                 overflow-hidden
@@ -546,18 +555,18 @@ export default function CartPage() {
               "
             >
               {/* SUMMARY HEADER */}
-              <div className="flex items-center justify-between">
-                <div>
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
                   <p className="text-[9px] font-medium uppercase tracking-[0.25em] text-amber-700">
                     Maison
                   </p>
 
-                  <h2 className="mt-1 font-display text-2xl text-stone-900 sm:text-3xl">
+                  <h2 className="mt-1 font-display text-2xl leading-tight text-stone-900 sm:text-3xl">
                     Order Summary
                   </h2>
                 </div>
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-100">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-100">
                   <ShoppingBag
                     size={17}
                     className="text-stone-700"
@@ -567,21 +576,21 @@ export default function CartPage() {
 
               {/* PRICE DETAILS */}
               <div className="mt-7 space-y-4 text-xs sm:text-sm">
-                <div className="flex justify-between text-stone-500">
+                <div className="flex justify-between gap-4 text-stone-500">
                   <span>Subtotal</span>
-                  <span className="font-medium text-stone-800">
+                  <span className="shrink-0 font-medium text-stone-800">
                     {formatPrice(cartTotal)}
                   </span>
                 </div>
 
-                <div className="flex justify-between text-stone-500">
+                <div className="flex justify-between gap-4 text-stone-500">
                   <span>Shipping</span>
 
                   <span
                     className={
                       shipping === 0
-                        ? "font-medium text-emerald-600"
-                        : "font-medium text-stone-800"
+                        ? "shrink-0 font-medium text-emerald-600"
+                        : "shrink-0 font-medium text-stone-800"
                     }
                   >
                     {shipping
@@ -591,20 +600,20 @@ export default function CartPage() {
                 </div>
 
                 <div className="border-t border-stone-200 pt-5">
-                  <div className="flex items-end justify-between">
-                    <div>
+                  <div className="flex items-end justify-between gap-4">
+                    <div className="min-w-0">
                       <p className="text-[9px] uppercase tracking-[0.15em] text-stone-400">
                         Total
                       </p>
 
-                      <p className="mt-1 font-display text-2xl text-stone-900 sm:text-3xl">
+                      <p className="mt-1 break-words font-display text-2xl text-stone-900 sm:text-3xl">
                         {formatPrice(
                           cartTotal + shipping
                         )}
                       </p>
                     </div>
 
-                    <span className="mb-1 text-[9px] text-stone-400">
+                    <span className="mb-1 shrink-0 text-right text-[9px] text-stone-400">
                       Inclusive of all charges
                     </span>
                   </div>
@@ -618,14 +627,16 @@ export default function CartPage() {
                   group
                   mt-7
                   flex
-                  h-13
+                  min-h-12
                   w-full
                   items-center
                   justify-center
                   gap-3
                   rounded-xl
                   bg-stone-900
-                  py-4
+                  px-4
+                  py-3.5
+                  text-center
                   text-[10px]
                   font-semibold
                   uppercase
@@ -636,13 +647,14 @@ export default function CartPage() {
                   duration-300
                   hover:bg-amber-700
                   hover:shadow-xl
+                  sm:min-h-13
                 "
               >
                 Proceed to Checkout
 
                 <ArrowRight
                   size={14}
-                  className="transition-transform group-hover:translate-x-1"
+                  className="shrink-0 transition-transform group-hover:translate-x-1"
                 />
               </Link>
 
