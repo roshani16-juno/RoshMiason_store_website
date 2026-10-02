@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/context/StoreContext";
@@ -21,10 +22,10 @@ function GradientBackground() {
   );
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body  className="bg-[#0f0c29] text-white antialiased">
+      <body className="bg-[#0f0c29] text-white antialiased">
         <StoreProvider>
           <GradientBackground />
           <Navbar />
